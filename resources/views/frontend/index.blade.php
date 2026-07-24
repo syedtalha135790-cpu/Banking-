@@ -129,37 +129,106 @@
 
         <!-- Hero Illustration -->
         <div class="lg:col-span-6 relative flex justify-center reveal-right active">
-          <div class="relative w-full max-w-md md:max-w-lg aspect-square flex items-center justify-center">
+          <div id="hero-mockup-container" class="relative w-full max-w-md md:max-w-lg aspect-square flex items-center justify-center animate-float-slow">
             
-            <!-- Dynamic SVG Banking Dashboard Mockup -->
-            <svg class="w-full h-full text-gray-200 animate-float" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="50" y="50" width="400" height="400" rx="30" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="2"/>
-              <!-- Card 1 -->
-              <rect x="80" y="90" width="340" height="150" rx="20" fill="url(#card-grad)" class="shadow-md"/>
-              <circle cx="130" cy="140" r="20" fill="#ffffff" fill-opacity="0.3"/>
-              <rect x="80" y="270" width="160" height="100" rx="15" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1.5"/>
-              <rect x="260" y="270" width="160" height="100" rx="15" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1.5"/>
-              <!-- Graph SVG Inside -->
-              <path d="M 95 350 Q 130 310 160 330 T 225 290" stroke="#06B6D4" stroke-width="4" stroke-linecap="round" fill="none"/>
-              <circle cx="225" cy="290" r="5" fill="#F4C542"/>
-              <!-- Small Card Details -->
-              <rect x="280" y="295" width="80" height="10" rx="5" fill="#E5E7EB"/>
-              <rect x="280" y="315" width="120" height="12" rx="6" fill="#2563EB"/>
-              <rect x="280" y="335" width="50" height="10" rx="5" fill="#E5E7EB"/>
-              <!-- Card Chip/Logo -->
-              <rect x="340" y="125" width="45" height="30" rx="5" fill="#F4C542" fill-opacity="0.9"/>
-              <!-- Card Number Placeholder -->
-              <text x="110" y="210" fill="#ffffff" font-family="'Outfit', sans-serif" font-weight="bold" font-size="16" letter-spacing="4">••••  ••••  ••••  8829</text>
+            <!-- Upgraded Dynamic SVG Banking Dashboard Mockup -->
+            <svg class="w-full h-full text-gray-200" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg" style="filter: drop-shadow(0 20px 25px rgba(0, 0, 0, 0.05));">
+              <!-- Background card -->
+              <rect x="50" y="50" width="400" height="400" rx="32" fill="#FFFFFF" stroke="#F1F5F9" stroke-width="2"/>
+              
+              <!-- Soft grid behind cards inside SVG -->
+              <line x1="50" y1="200" x2="450" y2="200" stroke="#F8FAFC" stroke-width="1.5"/>
+              <line x1="50" y1="300" x2="450" y2="300" stroke="#F8FAFC" stroke-width="1.5"/>
+              
+              <!-- 1. The Credit Card -->
+              <g filter="url(#element-shadow)">
+                <rect x="80" y="90" width="340" height="150" rx="20" fill="url(#card-grad)"/>
+              </g>
+              
+              <!-- Card details: Glassmorphic circle accent -->
+              <circle cx="120" cy="135" r="24" fill="#ffffff" fill-opacity="0.15"/>
+              
+              <!-- Chip Details -->
+              <rect x="340" y="125" width="42" height="30" rx="6" fill="url(#chip-grad)"/>
+              <line x1="354" y1="125" x2="354" y2="155" stroke="#7A6010" stroke-width="0.75" stroke-opacity="0.4"/>
+              <line x1="368" y1="125" x2="368" y2="155" stroke="#7A6010" stroke-width="0.75" stroke-opacity="0.4"/>
+              <line x1="340" y1="140" x2="382" y2="140" stroke="#7A6010" stroke-width="0.75" stroke-opacity="0.4"/>
+              
+              <!-- Card Labels -->
+              <text x="100" y="125" fill="#ffffff" fill-opacity="0.6" font-family="'Inter', sans-serif" font-size="8" font-weight="bold" letter-spacing="1">PREMIUM DEBIT</text>
+              <text x="100" y="142" fill="#ffffff" font-family="'Outfit', sans-serif" font-weight="bold" font-size="14">BMS Black</text>
+              
+              <!-- Card number -->
+              <text x="100" y="195" fill="#ffffff" font-family="'Outfit', sans-serif" font-weight="bold" font-size="15" letter-spacing="3">••••  ••••  ••••  8829</text>
+              
+              <!-- Card holder and exp -->
+              <text x="100" y="222" fill="#ffffff" fill-opacity="0.7" font-family="'Inter', sans-serif" font-size="9" letter-spacing="0.5">MARCUS KING</text>
+              <text x="350" y="222" fill="#ffffff" fill-opacity="0.7" font-family="'Inter', sans-serif" font-size="9" letter-spacing="0.5">12/29</text>
+              
+              <!-- Visa/Mastercard style silver design overlay -->
+              <circle cx="355" cy="195" r="12" fill="#ffffff" fill-opacity="0.2"/>
+              <circle cx="367" cy="195" r="12" fill="#ffffff" fill-opacity="0.3"/>
+
+              <!-- 2. Left Widget: Line Chart Card -->
+              <g filter="url(#element-shadow)">
+                <rect x="80" y="265" width="160" height="110" rx="18" fill="#FFFFFF" stroke="#F1F5F9" stroke-width="1.5"/>
+              </g>
+              <text x="95" y="290" fill="#94A3B8" font-family="'Inter', sans-serif" font-size="9" font-weight="bold">TRANSACTIONS</text>
+              
+              <!-- Grid lines inside widget -->
+              <line x1="95" y1="315" x2="225" y2="315" stroke="#F1F5F9" stroke-width="1"/>
+              <line x1="95" y1="335" x2="225" y2="335" stroke="#F1F5F9" stroke-width="1"/>
+              
+              <!-- Area Fill under chart -->
+              <path d="M 95 355 Q 125 320 155 338 T 215 305 L 215 360 L 95 360 Z" fill="url(#chart-fade-grad)" opacity="0.6"/>
+              <!-- Line path -->
+              <path d="M 95 355 Q 125 320 155 338 T 215 305" stroke="#06B6D4" stroke-width="3" stroke-linecap="round" fill="none"/>
+              <!-- Highlight dot -->
+              <circle cx="215" cy="305" r="5" fill="#F4C542"/>
+
+              <!-- 3. Right Widget: Progress Card -->
+              <g filter="url(#element-shadow)">
+                <rect x="260" y="265" width="160" height="110" rx="18" fill="#FFFFFF" stroke="#F1F5F9" stroke-width="1.5"/>
+              </g>
+              <text x="275" y="290" fill="#94A3B8" font-family="'Inter', sans-serif" font-size="9" font-weight="bold">SAVINGS TARGET</text>
+              <text x="275" y="315" fill="#1E293B" font-family="'Outfit', sans-serif" font-size="15" font-weight="bold">75%</text>
+              <text x="310" y="313" fill="#94A3B8" font-family="'Inter', sans-serif" font-size="9">7,500 / 10,000</text>
+              
+              <!-- Custom styled progress bar inside right card -->
+              <rect x="275" y="328" width="130" height="10" rx="5" fill="#F1F5F9"/>
+              <rect x="275" y="328" width="97.5" height="10" rx="5" fill="url(#progress-bar-grad)"/>
+
+              <!-- Bottom details inside right card -->
+              <rect x="275" y="352" width="55" height="8" rx="4" fill="#E2E8F0"/>
+              <rect x="345" y="352" width="60" height="8" rx="4" fill="#F1F5F9"/>
+
+              <!-- Definitions -->
               <defs>
                 <linearGradient id="card-grad" x1="80" y1="90" x2="420" y2="240" gradientUnits="userSpaceOnUse">
-                  <stop offset="0%" stop-color="#2563EB"/>
+                  <stop offset="0%" stop-color="#1E3A8A"/>
+                  <stop offset="50%" stop-color="#3B82F6"/>
                   <stop offset="100%" stop-color="#06B6D4"/>
                 </linearGradient>
+                <linearGradient id="chip-grad" x1="340" y1="125" x2="382" y2="155" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#F59E0B"/>
+                  <stop offset="100%" stop-color="#D97706"/>
+                </linearGradient>
+                <linearGradient id="chart-fade-grad" x1="95" y1="305" x2="95" y2="360" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#06B6D4" stop-opacity="0.4"/>
+                  <stop offset="100%" stop-color="#06B6D4" stop-opacity="0.0"/>
+                </linearGradient>
+                <linearGradient id="progress-bar-grad" x1="275" y1="328" x2="372.5" y2="328" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#3B82F6"/>
+                  <stop offset="100%" stop-color="#06B6D4"/>
+                </linearGradient>
+                <filter id="element-shadow" x="70" y="80" width="360" height="310" filterUnits="userSpaceOnUse">
+                  <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#0F172A" flood-opacity="0.06"/>
+                </filter>
               </defs>
             </svg>
             
             <!-- Floating Elements -->
-            <div class="absolute -top-4 -right-4 card-3d p-4 rounded-2xl flex items-center space-x-3">
+            <div class="absolute -top-6 -right-6 card-3d p-4 rounded-2xl flex items-center space-x-3 animate-float duration-3000">
               <div class="p-2 bg-blue-50 text-blue-600 rounded-lg">
                 <i data-lucide="trending-up" class="w-5 h-5"></i>
               </div>
@@ -169,7 +238,7 @@
               </div>
             </div>
             
-            <div class="absolute -bottom-4 -left-4 card-3d p-4 rounded-2xl flex items-center space-x-3">
+            <div class="absolute -bottom-6 -left-6 card-3d p-4 rounded-2xl flex items-center space-x-3 animate-float-delayed">
               <div class="p-2 bg-blue-50 text-blue-600 rounded-lg">
                 <i data-lucide="credit-card" class="w-5 h-5"></i>
               </div>
@@ -984,6 +1053,23 @@
             showSlide(currentSlide);
           });
         }
+      }
+
+      // 6. 3D Tilt Mockup Card Interaction
+      const mockupContainer = document.getElementById('hero-mockup-container');
+      if (mockupContainer) {
+        mockupContainer.addEventListener('mousemove', (e) => {
+          const rect = mockupContainer.getBoundingClientRect();
+          const x = e.clientX - rect.left - rect.width / 2;
+          const y = e.clientY - rect.top - rect.height / 2;
+          const rotateX = -y / (rect.height / 2) * 12;
+          const rotateY = x / (rect.width / 2) * 12;
+          mockupContainer.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+        });
+        mockupContainer.style.transition = 'transform 0.15s cubic-bezier(0.25, 1, 0.5, 1)';
+        mockupContainer.addEventListener('mouseleave', () => {
+          mockupContainer.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+        });
       }
     });
   </script>
