@@ -96,7 +96,7 @@
   </nav>
 
   <!-- Hero Section -->
-  <header class="relative overflow-hidden pt-12 pb-20 lg:pt-20 lg:pb-32 bg-white">
+  <header class="relative overflow-hidden pt-8 pb-14 lg:pt-14 lg:pb-20 bg-white">
     <!-- Soft Background Shapes -->
     <div class="absolute top-1/4 left-1/10 w-96 h-96 bg-blue-50/60 rounded-full blur-3xl animate-pulse-soft"></div>
     <div class="absolute bottom-1/4 right-1/10 w-96 h-96 bg-cyan-50/50 rounded-full blur-3xl animate-pulse-soft"></div>
@@ -183,187 +183,68 @@
         </div>
 
       </div>
+      <!-- Statistics Bar -->
+      <div class="mt-12 pt-8 border-t border-gray-150 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div class="space-y-1">
+          <p class="text-2xl sm:text-3xl font-extrabold text-primary stat-counter" data-target="500" data-suffix="K+">0K+</p>
+          <p class="text-[10px] sm:text-xs font-bold text-gray-400 uppercase tracking-wider">Active Customers</p>
+        </div>
+        <div class="space-y-1">
+          <p class="text-2xl sm:text-3xl font-extrabold text-primary stat-counter" data-target="250" data-suffix="+">0+</p>
+          <p class="text-[10px] sm:text-xs font-bold text-gray-400 uppercase tracking-wider">Global Branches</p>
+        </div>
+        <div class="space-y-1">
+          <p class="text-2xl sm:text-3xl font-extrabold text-primary stat-counter" data-target="99.99" data-suffix="%" data-decimal="true">0.00%</p>
+          <p class="text-[10px] sm:text-xs font-bold text-gray-400 uppercase tracking-wider">Secure Transactions</p>
+        </div>
+        <div class="space-y-1">
+          <p class="text-2xl sm:text-3xl font-extrabold text-primary stat-counter" data-target="24" data-suffix="/7">0/7</p>
+          <p class="text-[10px] sm:text-xs font-bold text-gray-400 uppercase tracking-wider">Support Uptime</p>
+        </div>
+      </div>
     </div>
   </header>
 
-  <!-- Statistics Section -->
-  <section class="py-12 bg-slate-50 border-y border-gray-200">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-        
-        <div class="space-y-1">
-          <p class="text-3xl sm:text-4xl font-extrabold text-primary stat-counter" data-target="500" data-suffix="K+">0K+</p>
-          <p class="text-xs sm:text-sm font-semibold text-gray-500 uppercase tracking-wider">Active Customers</p>
-        </div>
 
-        <div class="space-y-1">
-          <p class="text-3xl sm:text-4xl font-extrabold text-primary stat-counter" data-target="250" data-suffix="+">0+</p>
-          <p class="text-xs sm:text-sm font-semibold text-gray-500 uppercase tracking-wider">Global Branches</p>
-        </div>
 
-        <div class="space-y-1">
-          <p class="text-3xl sm:text-4xl font-extrabold text-primary stat-counter" data-target="99.99" data-suffix="%" data-decimal="true">0.00%</p>
-          <p class="text-xs sm:text-sm font-semibold text-gray-500 uppercase tracking-wider">Secure Transactions</p>
-        </div>
-
-        <div class="space-y-1">
-          <p class="text-3xl sm:text-4xl font-extrabold text-primary stat-counter" data-target="24" data-suffix="/7">0/7</p>
-          <p class="text-xs sm:text-sm font-semibold text-gray-500 uppercase tracking-wider">Support Uptime</p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Services Section -->
-  <section class="py-20 lg:py-32 bg-white">
+  <!-- Interactive Showcase Section -->
+  <section class="py-14 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <!-- Section Header -->
-      <div class="text-center max-w-3xl mx-auto mb-16 reveal">
-        <h2 class="text-xs font-bold uppercase tracking-wider text-primary mb-3">Our Core Services</h2>
-        <p class="text-3xl sm:text-4xl font-extrabold text-gray-900">
-          Comprehensive Banking Built Around You
+      <div class="text-center max-w-3xl mx-auto mb-10 reveal">
+        <h2 class="text-xs font-bold uppercase tracking-wider text-primary mb-2">Interactive Showcase</h2>
+        <p class="text-3xl font-extrabold text-gray-900">
+          Smart Products, Zero Friction
         </p>
-        <p class="mt-4 text-gray-500">
-          Unlock the full potential of your finances with modern tools to deposit, invest, transfer, and borrow safely.
+        <p class="mt-3 text-gray-550 text-sm">
+          Navigate through our core features to experience institutional-grade tools built directly around your financial workflows.
         </p>
       </div>
 
-      <!-- Services Grid -->
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-        
-        <!-- Account Management -->
-        <div class="card-3d p-8 rounded-3xl relative group overflow-hidden reveal">
-          <div class="absolute top-0 right-0 w-24 h-24 bg-blue-50 rounded-full blur-xl group-hover:bg-blue-100 transition-all duration-300"></div>
-          <div class="p-3 bg-blue-50 text-blue-600 rounded-2xl w-14 h-14 flex items-center justify-center mb-6">
-            <i data-lucide="user-check" class="w-6 h-6"></i>
-          </div>
-          <h3 class="text-xl font-bold mb-3 text-gray-900">Account Management</h3>
-          <p class="text-gray-500 text-sm leading-relaxed mb-6">
-            Monitor balances, set savings pockets, and configure auto-transfers in seconds.
-          </p>
-          <a href="{{ route('accounts') }}" class="flex items-center text-primary font-bold text-sm hover:underline">
-            <span>Learn More</span>
-            <i data-lucide="chevron-right" class="w-4 h-4 ml-1"></i>
-          </a>
-        </div>
+      <!-- Tab Buttons -->
+      <div class="flex justify-center space-x-2 sm:space-x-4 mb-10">
+        <button class="showcase-tab-btn active px-6 py-2.5 rounded-full text-xs font-bold transition-all border border-primary bg-primary text-white shadow-sm" data-tab="accounts">
+          Core Accounts
+        </button>
+        <button class="showcase-tab-btn px-6 py-2.5 rounded-full text-xs font-bold transition-all border border-gray-250 bg-slate-50 text-gray-600 hover:bg-slate-100" data-tab="payments">
+          Payments & Cards
+        </button>
+        <button class="showcase-tab-btn px-6 py-2.5 rounded-full text-xs font-bold transition-all border border-gray-250 bg-slate-50 text-gray-600 hover:bg-slate-100" data-tab="lending">
+          Lending & Wealth
+        </button>
+      </div>
 
-        <!-- Online Banking -->
-        <div class="card-3d p-8 rounded-3xl relative group overflow-hidden reveal">
-          <div class="absolute top-0 right-0 w-24 h-24 bg-cyan-50 rounded-full blur-xl group-hover:bg-cyan-100 transition-all duration-300"></div>
-          <div class="p-3 bg-blue-50 text-blue-600 rounded-2xl w-14 h-14 flex items-center justify-center mb-6">
-            <i data-lucide="monitor" class="w-6 h-6"></i>
-          </div>
-          <h3 class="text-xl font-bold mb-3 text-gray-900">Online Banking</h3>
-          <p class="text-gray-500 text-sm leading-relaxed mb-6">
-            Check logs, transfer anywhere, and update cards straight from your browser.
-          </p>
-          <a href="{{ route('online-banking') }}" class="flex items-center text-primary font-bold text-sm hover:underline">
-            <span>Explore App</span>
-            <i data-lucide="chevron-right" class="w-4 h-4 ml-1"></i>
-          </a>
-        </div>
-
-        <!-- Money Transfer -->
-        <div class="card-3d p-8 rounded-3xl relative group overflow-hidden reveal">
-          <div class="absolute top-0 right-0 w-24 h-24 bg-blue-50 rounded-full blur-xl group-hover:bg-blue-100 transition-all duration-300"></div>
-          <div class="p-3 bg-blue-50 text-blue-600 rounded-2xl w-14 h-14 flex items-center justify-center mb-6">
-            <i data-lucide="arrow-left-right" class="w-6 h-6"></i>
-          </div>
-          <h3 class="text-xl font-bold mb-3 text-gray-900">Money Transfer</h3>
-          <p class="text-gray-500 text-sm leading-relaxed mb-6">
-            Instant peer-to-peer and domestic wire transfers with rock-bottom fees.
-          </p>
-          <a href="{{ route('services') }}" class="flex items-center text-primary font-bold text-sm hover:underline">
-            <span>Transfer Rates</span>
-            <i data-lucide="chevron-right" class="w-4 h-4 ml-1"></i>
-          </a>
-        </div>
-
-        <!-- Loan Management -->
-        <div class="card-3d p-8 rounded-3xl relative group overflow-hidden reveal">
-          <div class="absolute top-0 right-0 w-24 h-24 bg-blue-50 rounded-full blur-xl group-hover:bg-blue-100 transition-all duration-300"></div>
-          <div class="p-3 bg-blue-50 text-blue-600 rounded-2xl w-14 h-14 flex items-center justify-center mb-6">
-            <i data-lucide="file-text" class="w-6 h-6"></i>
-          </div>
-          <h3 class="text-xl font-bold mb-3 text-gray-900">Loan Management</h3>
-          <p class="text-gray-500 text-sm leading-relaxed mb-6">
-            Get pre-approved for mortgages, car loans, and business development funding.
-          </p>
-          <a href="{{ route('loans') }}" class="flex items-center text-primary font-bold text-sm hover:underline">
-            <span>Calculate Interest</span>
-            <i data-lucide="chevron-right" class="w-4 h-4 ml-1"></i>
-          </a>
-        </div>
-
-        <!-- Credit Cards -->
-        <div class="card-3d p-8 rounded-3xl relative group overflow-hidden reveal">
-          <div class="p-3 bg-blue-50 text-blue-600 rounded-2xl w-14 h-14 flex items-center justify-center mb-6">
-            <i data-lucide="credit-card" class="w-6 h-6"></i>
-          </div>
-          <h3 class="text-xl font-bold mb-3 text-gray-900">Credit Cards</h3>
-          <p class="text-gray-500 text-sm leading-relaxed mb-6">
-            Up to 3% cashback on regular spending. Generous ceilings and flexible rates.
-          </p>
-          <a href="{{ route('services') }}" class="flex items-center text-primary font-bold text-sm hover:underline">
-            <span>Apply Now</span>
-            <i data-lucide="chevron-right" class="w-4 h-4 ml-1"></i>
-          </a>
-        </div>
-
-        <!-- Debit Cards -->
-        <div class="card-3d p-8 rounded-3xl relative group overflow-hidden reveal">
-          <div class="p-3 bg-blue-50 text-blue-600 rounded-2xl w-14 h-14 flex items-center justify-center mb-6">
-            <i data-lucide="pocket" class="w-6 h-6"></i>
-          </div>
-          <h3 class="text-xl font-bold mb-3 text-gray-900">Debit Cards</h3>
-          <p class="text-gray-500 text-sm leading-relaxed mb-6">
-            Instantly issue digital debits or order premium metallic cards direct to door.
-          </p>
-          <a href="{{ route('services') }}" class="flex items-center text-primary font-bold text-sm hover:underline">
-            <span>Design Card</span>
-            <i data-lucide="chevron-right" class="w-4 h-4 ml-1"></i>
-          </a>
-        </div>
-
-        <!-- Mobile Banking -->
-        <div class="card-3d p-8 rounded-3xl relative group overflow-hidden reveal">
-          <div class="p-3 bg-blue-50 text-blue-600 rounded-2xl w-14 h-14 flex items-center justify-center mb-6">
-            <i data-lucide="smartphone" class="w-6 h-6"></i>
-          </div>
-          <h3 class="text-xl font-bold mb-3 text-gray-900">Mobile Banking</h3>
-          <p class="text-gray-500 text-sm leading-relaxed mb-6">
-            NFC payments, push updates, biometrics and QR codes with our premium mobile app.
-          </p>
-          <a href="{{ route('online-banking') }}" class="flex items-center text-primary font-bold text-sm hover:underline">
-            <span>Download</span>
-            <i data-lucide="chevron-right" class="w-4 h-4 ml-1"></i>
-          </a>
-        </div>
-
-        <!-- Investment Services -->
-        <div class="card-3d p-8 rounded-3xl relative group overflow-hidden reveal">
-          <div class="p-3 bg-blue-50 text-blue-600 rounded-2xl w-14 h-14 flex items-center justify-center mb-6">
-            <i data-lucide="bar-chart-3" class="w-6 h-6"></i>
-          </div>
-          <h3 class="text-xl font-bold mb-3 text-gray-900">Investment Services</h3>
-          <p class="text-gray-500 text-sm leading-relaxed mb-6">
-            Buy global shares, funds, or commodities. Managed portfolio advisory tools.
-          </p>
-          <a href="{{ route('services') }}" class="flex items-center text-primary font-bold text-sm hover:underline">
-            <span>View Markets</span>
-            <i data-lucide="chevron-right" class="w-4 h-4 ml-1"></i>
-          </a>
-        </div>
-
+      <!-- Tab Showcase Grid -->
+      <div id="showcase-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 showcase-content">
+        <!-- Dynamic Content will be updated by JS -->
       </div>
 
     </div>
   </section>
 
   <!-- Features Section -->
-  <section class="py-20 lg:py-32 bg-slate-50 border-y border-gray-200">
+  <section class="py-14 bg-slate-50 border-y border-gray-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <!-- Section Header -->
@@ -517,7 +398,7 @@
   </section>
 
   <!-- How It Works Section -->
-  <section class="py-20 lg:py-32 bg-white overflow-hidden">
+  <section class="py-14 bg-white overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <!-- Section Header -->
@@ -589,7 +470,7 @@
   </section>
 
   <!-- Testimonials Section -->
-  <section class="py-20 lg:py-32 bg-slate-50 border-y border-gray-200">
+  <section class="py-14 bg-slate-50 border-y border-gray-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <!-- Section Header -->
@@ -603,84 +484,97 @@
         </p>
       </div>
 
-      <!-- Testimonial Cards -->
-      <div class="grid md:grid-cols-3 gap-8">
-        
-        <!-- Card 1 -->
-        <div class="bg-white border border-gray-200 p-8 rounded-[20px] shadow-sm relative reveal">
-          <div class="flex items-center space-x-1 text-amber-500 mb-4">
-            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-          </div>
-          <p class="text-gray-600 text-sm leading-relaxed italic mb-6">
-            "Switching our corporate account structure to BMS cut down international transaction times from 3 days to literally under 5 minutes. The dashboard interface is outstanding."
-          </p>
-          <div class="flex items-center space-x-3">
-            <div class="w-12 h-12 rounded-full bg-blue-50 text-blue-600 font-bold text-center flex items-center justify-center border border-blue-100">
-              SH
+      <!-- Testimonials Slider Container -->
+      <div class="relative max-w-2xl mx-auto">
+        <!-- Testimonial Slider Wrapper -->
+        <div class="relative min-h-[220px]">
+          
+          <!-- Slide 1 -->
+          <div class="testimonial-slide active card-3d p-8 rounded-[20px] relative">
+            <div class="flex items-center space-x-1 text-amber-500 mb-4">
+              <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+              <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+              <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+              <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+              <i data-lucide="star" class="w-5 h-5 fill-current"></i>
             </div>
-            <div>
-              <h4 class="font-bold text-sm text-gray-900">Sarah Jenkins</h4>
-              <p class="text-xs text-gray-400">CFO, Apex Global</p>
+            <p class="text-gray-600 text-sm leading-relaxed italic mb-6">
+              "Switching our corporate account structure to BMS cut down international transaction times from 3 days to literally under 5 minutes. The dashboard interface is outstanding."
+            </p>
+            <div class="flex items-center space-x-3">
+              <div class="w-10 h-10 rounded-full bg-blue-50 text-blue-600 font-bold text-center flex items-center justify-center border border-blue-100 text-xs">
+                SH
+              </div>
+              <div>
+                <h4 class="font-bold text-sm text-gray-900">Sarah Jenkins</h4>
+                <p class="text-xs text-gray-400">CFO, Apex Global</p>
+              </div>
             </div>
           </div>
+
+          <!-- Slide 2 -->
+          <div class="testimonial-slide card-3d p-8 rounded-[20px] relative">
+            <div class="flex items-center space-x-1 text-amber-500 mb-4">
+              <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+              <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+              <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+              <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+              <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+            </div>
+            <p class="text-gray-600 text-sm leading-relaxed italic mb-6">
+              "The personal savings vaults and custom card limits allow me to split bills and manage my family budget stress-free. The mobile app face-unlock makes accessing accounts seamless."
+            </p>
+            <div class="flex items-center space-x-3">
+              <div class="w-10 h-10 rounded-full bg-blue-50 text-blue-600 font-bold text-center flex items-center justify-center border border-blue-100 text-xs">
+                MK
+              </div>
+              <div>
+                <h4 class="font-bold text-sm text-gray-900">Marcus King</h4>
+                <p class="text-xs text-gray-400">Tech Lead, StreamLine</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="testimonial-slide card-3d p-8 rounded-[20px] relative">
+            <div class="flex items-center space-x-1 text-amber-500 mb-4">
+              <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+              <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+              <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+              <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+              <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+            </div>
+            <p class="text-gray-600 text-sm leading-relaxed italic mb-6">
+              "Securing a student loan with their automated calculator was fully online. The monthly repayments and transparent interest rates were clear without any hidden advisory service fees."
+            </p>
+            <div class="flex items-center space-x-3">
+              <div class="w-10 h-10 rounded-full bg-blue-50 text-blue-600 font-bold text-center flex items-center justify-center border border-blue-100 text-xs">
+                EL
+              </div>
+              <div>
+                <h4 class="font-bold text-sm text-gray-900">Elena Rostova</h4>
+                <p class="text-xs text-gray-400">PhD Student, Imperial</p>
+              </div>
+            </div>
+          </div>
+
         </div>
 
-        <!-- Card 2 -->
-        <div class="bg-white border border-gray-200 p-8 rounded-[20px] shadow-sm relative reveal" style="transition-delay: 150ms;">
-          <div class="flex items-center space-x-1 text-amber-500 mb-4">
-            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-          </div>
-          <p class="text-gray-600 text-sm leading-relaxed italic mb-6">
-            "The personal savings vaults and custom card limits allow me to split bills and manage my family budget stress-free. The mobile app face-unlock makes accessing accounts seamless."
-          </p>
-          <div class="flex items-center space-x-3">
-            <div class="w-12 h-12 rounded-full bg-blue-50 text-blue-600 font-bold text-center flex items-center justify-center border border-blue-100">
-              MK
-            </div>
-            <div>
-              <h4 class="font-bold text-sm text-gray-900">Marcus King</h4>
-              <p class="text-xs text-gray-400">Tech Lead, StreamLine</p>
-            </div>
-          </div>
+        <!-- Slider Controls -->
+        <div class="flex justify-center space-x-4 mt-6">
+          <button id="prev-testimonial" class="p-2.5 rounded-full bg-white border border-gray-200 text-gray-500 hover:text-primary hover:border-primary hover:shadow-sm transition-all">
+            <i data-lucide="chevron-left" class="w-4 h-4"></i>
+          </button>
+          <button id="next-testimonial" class="p-2.5 rounded-full bg-white border border-gray-200 text-gray-500 hover:text-primary hover:border-primary hover:shadow-sm transition-all">
+            <i data-lucide="chevron-right" class="w-4 h-4"></i>
+          </button>
         </div>
-
-        <!-- Card 3 -->
-        <div class="bg-white border border-gray-200 p-8 rounded-[20px] shadow-sm relative reveal" style="transition-delay: 300ms;">
-          <div class="flex items-center space-x-1 text-amber-500 mb-4">
-            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-          </div>
-          <p class="text-gray-600 text-sm leading-relaxed italic mb-6">
-            "Securing a student loan with their automated calculator was fully online. The monthly repayments and transparent interest rates were clear without any hidden advisory service fees."
-          </p>
-          <div class="flex items-center space-x-3">
-            <div class="w-12 h-12 rounded-full bg-blue-50 text-blue-600 font-bold text-center flex items-center justify-center border border-blue-100">
-              EL
-            </div>
-            <div>
-              <h4 class="font-bold text-sm text-gray-900">Elena Rostova</h4>
-              <p class="text-xs text-gray-400">PhD Student, Imperial</p>
-            </div>
-          </div>
-        </div>
-
       </div>
     </div>
   </section>
 
   <!-- FAQ Section -->
-  <section class="py-20 lg:py-32 bg-white">
+  <section class="py-14 bg-white">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <!-- Section Header -->
@@ -752,7 +646,7 @@
   </section>
 
   <!-- Call To Action Section -->
-  <section class="py-20 lg:py-28 relative overflow-hidden bg-gradient-primary text-white">
+  <section class="py-14 relative overflow-hidden bg-gradient-primary text-white">
     <div class="absolute inset-0 bg-black/5"></div>
     <div class="absolute -top-1/2 -left-1/4 w-96 h-96 bg-white/10 rounded-full blur-3xl animate-pulse-soft"></div>
     <div class="absolute -bottom-1/2 -right-1/4 w-96 h-96 bg-cyan-550/20 rounded-full blur-3xl animate-pulse-soft"></div>
@@ -872,17 +766,20 @@
         });
       }
 
-      // 2. Card Mouse Move Spotlight Effect
-      const spotlightCards = document.querySelectorAll('.card-3d');
-      spotlightCards.forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-          const rect = card.getBoundingClientRect();
-          const x = e.clientX - rect.left;
-          const y = e.clientY - rect.top;
-          card.style.setProperty('--mouse-x', `${x}px`);
-          card.style.setProperty('--mouse-y', `${y}px`);
+      // 2. Card Mouse Move Spotlight Effect Re-binder Helper
+      const bindSpotlights = (parent = document) => {
+        const spotlightCards = parent.querySelectorAll('.card-3d');
+        spotlightCards.forEach(card => {
+          card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            card.style.setProperty('--mouse-x', `${x}px`);
+            card.style.setProperty('--mouse-y', `${y}px`);
+          });
         });
-      });
+      };
+      bindSpotlights();
 
       // 3. Hero Text Ticker Animation
       const tickerElement = document.getElementById('hero-ticker');
@@ -901,8 +798,192 @@
             wordIndex = (wordIndex + 1) % words.length;
             tickerElement.textContent = words[wordIndex];
             tickerElement.classList.add('active');
-          }, 400); // Time to slide down and hide before word swap
-        }, 3500); // Swaps word every 3.5 seconds
+          }, 400);
+        }, 3500);
+      }
+
+      // 4. Interactive Showcase Tabs Switcher
+      const tabData = {
+        accounts: `
+          <!-- Account Management -->
+          <div class="card-3d p-6 rounded-3xl relative group overflow-hidden">
+            <div class="absolute top-0 right-0 w-20 h-20 bg-blue-50/50 rounded-full blur-lg group-hover:bg-blue-100/60 transition-all duration-300"></div>
+            <div class="p-3 bg-blue-50 text-blue-600 rounded-2xl w-12 h-12 flex items-center justify-center mb-5">
+              <i data-lucide="user-check" class="w-5 h-5"></i>
+            </div>
+            <h3 class="text-lg font-bold mb-2 text-gray-900">Account Management</h3>
+            <p class="text-gray-500 text-xs leading-relaxed mb-5">
+              Monitor balances, set savings pockets, and configure auto-transfers in seconds.
+            </p>
+            <a href="/accounts" class="flex items-center text-primary font-bold text-xs hover:underline">
+              <span>Learn More</span>
+              <i data-lucide="chevron-right" class="w-3.5 h-3.5 ml-1"></i>
+            </a>
+          </div>
+          <!-- Online Banking -->
+          <div class="card-3d p-6 rounded-3xl relative group overflow-hidden">
+            <div class="absolute top-0 right-0 w-20 h-20 bg-blue-50/50 rounded-full blur-lg group-hover:bg-blue-100/60 transition-all duration-300"></div>
+            <div class="p-3 bg-blue-50 text-blue-600 rounded-2xl w-12 h-12 flex items-center justify-center mb-5">
+              <i data-lucide="monitor" class="w-5 h-5"></i>
+            </div>
+            <h3 class="text-lg font-bold mb-2 text-gray-900">Online Banking</h3>
+            <p class="text-gray-500 text-xs leading-relaxed mb-5">
+              Check logs, transfer anywhere, and update cards straight from your browser.
+            </p>
+            <a href="/online-banking" class="flex items-center text-primary font-bold text-xs hover:underline">
+              <span>Explore App</span>
+              <i data-lucide="chevron-right" class="w-3.5 h-3.5 ml-1"></i>
+            </a>
+          </div>
+          <!-- Mobile Banking -->
+          <div class="card-3d p-6 rounded-3xl relative group overflow-hidden">
+            <div class="absolute top-0 right-0 w-20 h-20 bg-blue-50/50 rounded-full blur-lg group-hover:bg-blue-100/60 transition-all duration-300"></div>
+            <div class="p-3 bg-blue-50 text-blue-600 rounded-2xl w-12 h-12 flex items-center justify-center mb-5">
+              <i data-lucide="smartphone" class="w-5 h-5"></i>
+            </div>
+            <h3 class="text-lg font-bold mb-2 text-gray-900">Mobile Banking</h3>
+            <p class="text-gray-500 text-xs leading-relaxed mb-5">
+              NFC payments, push updates, biometrics and QR codes with our premium mobile app.
+            </p>
+            <a href="/online-banking" class="flex items-center text-primary font-bold text-xs hover:underline">
+              <span>Download</span>
+              <i data-lucide="chevron-right" class="w-3.5 h-3.5 ml-1"></i>
+            </a>
+          </div>
+        `,
+        payments: `
+          <!-- Money Transfer -->
+          <div class="card-3d p-6 rounded-3xl relative group overflow-hidden">
+            <div class="absolute top-0 right-0 w-20 h-20 bg-blue-50/50 rounded-full blur-lg group-hover:bg-blue-100/60 transition-all duration-300"></div>
+            <div class="p-3 bg-blue-50 text-blue-600 rounded-2xl w-12 h-12 flex items-center justify-center mb-5">
+              <i data-lucide="arrow-left-right" class="w-5 h-5"></i>
+            </div>
+            <h3 class="text-lg font-bold mb-2 text-gray-900">Money Transfer</h3>
+            <p class="text-gray-500 text-xs leading-relaxed mb-5">
+              Instant peer-to-peer and domestic wire transfers with rock-bottom fees.
+            </p>
+            <a href="/services" class="flex items-center text-primary font-bold text-xs hover:underline">
+              <span>Transfer Rates</span>
+              <i data-lucide="chevron-right" class="w-3.5 h-3.5 ml-1"></i>
+            </a>
+          </div>
+          <!-- Credit Cards -->
+          <div class="card-3d p-6 rounded-3xl relative group overflow-hidden">
+            <div class="absolute top-0 right-0 w-20 h-20 bg-blue-50/50 rounded-full blur-lg group-hover:bg-blue-100/60 transition-all duration-300"></div>
+            <div class="p-3 bg-blue-50 text-blue-600 rounded-2xl w-12 h-12 flex items-center justify-center mb-5">
+              <i data-lucide="credit-card" class="w-5 h-5"></i>
+            </div>
+            <h3 class="text-lg font-bold mb-2 text-gray-900">Credit Cards</h3>
+            <p class="text-gray-500 text-xs leading-relaxed mb-5">
+              Up to 3% cashback on regular spending. Generous ceilings and flexible rates.
+            </p>
+            <a href="/services" class="flex items-center text-primary font-bold text-xs hover:underline">
+              <span>Apply Now</span>
+              <i data-lucide="chevron-right" class="w-3.5 h-3.5 ml-1"></i>
+            </a>
+          </div>
+          <!-- Debit Cards -->
+          <div class="card-3d p-6 rounded-3xl relative group overflow-hidden">
+            <div class="absolute top-0 right-0 w-20 h-20 bg-blue-50/50 rounded-full blur-lg group-hover:bg-blue-100/60 transition-all duration-300"></div>
+            <div class="p-3 bg-blue-50 text-blue-600 rounded-2xl w-12 h-12 flex items-center justify-center mb-5">
+              <i data-lucide="pocket" class="w-5 h-5"></i>
+            </div>
+            <h3 class="text-lg font-bold mb-2 text-gray-900">Debit Cards</h3>
+            <p class="text-gray-500 text-xs leading-relaxed mb-5">
+              Instantly issue digital debits or order premium metallic cards direct to door.
+            </p>
+            <a href="/services" class="flex items-center text-primary font-bold text-xs hover:underline">
+              <span>Design Card</span>
+              <i data-lucide="chevron-right" class="w-3.5 h-3.5 ml-1"></i>
+            </a>
+          </div>
+        `,
+        lending: `
+          <!-- Loan Management -->
+          <div class="card-3d p-6 rounded-3xl relative group overflow-hidden">
+            <div class="absolute top-0 right-0 w-20 h-20 bg-blue-50/50 rounded-full blur-lg group-hover:bg-blue-100/60 transition-all duration-300"></div>
+            <div class="p-3 bg-blue-50 text-blue-600 rounded-2xl w-12 h-12 flex items-center justify-center mb-5">
+              <i data-lucide="file-text" class="w-5 h-5"></i>
+            </div>
+            <h3 class="text-lg font-bold mb-2 text-gray-900">Loan Management</h3>
+            <p class="text-gray-500 text-xs leading-relaxed mb-5">
+              Get pre-approved for mortgages, car loans, and business development funding.
+            </p>
+            <a href="/loans" class="flex items-center text-primary font-bold text-xs hover:underline">
+              <span>Calculate Interest</span>
+              <i data-lucide="chevron-right" class="w-3.5 h-3.5 ml-1"></i>
+            </a>
+          </div>
+          <!-- Investment Services -->
+          <div class="card-3d p-6 rounded-3xl relative group overflow-hidden">
+            <div class="absolute top-0 right-0 w-20 h-20 bg-blue-50/50 rounded-full blur-lg group-hover:bg-blue-100/60 transition-all duration-300"></div>
+            <div class="p-3 bg-blue-50 text-blue-600 rounded-2xl w-12 h-12 flex items-center justify-center mb-5">
+              <i data-lucide="bar-chart-3" class="w-5 h-5"></i>
+            </div>
+            <h3 class="text-lg font-bold mb-2 text-gray-900">Investment Services</h3>
+            <p class="text-gray-500 text-xs leading-relaxed mb-5">
+              Buy global shares, funds, or commodities. Managed portfolio advisory tools.
+            </p>
+            <a href="/services" class="flex items-center text-primary font-bold text-xs hover:underline">
+              <span>View Markets</span>
+              <i data-lucide="chevron-right" class="w-3.5 h-3.5 ml-1"></i>
+            </a>
+          </div>
+        `
+      };
+
+      const tabs = document.querySelectorAll('.showcase-tab-btn');
+      const grid = document.getElementById('showcase-grid');
+      
+      const switchTab = (tabName) => {
+        if (!grid) return;
+        grid.classList.add('fade-out');
+        setTimeout(() => {
+          grid.innerHTML = tabData[tabName];
+          if (typeof lucide !== 'undefined') lucide.createIcons();
+          bindSpotlights(grid);
+          grid.classList.remove('fade-out');
+        }, 300);
+      };
+
+      tabs.forEach(btn => {
+        btn.addEventListener('click', () => {
+          tabs.forEach(t => t.classList.remove('active', 'bg-primary', 'text-white', 'border-primary'));
+          tabs.forEach(t => t.classList.add('bg-slate-50', 'text-gray-600', 'border-gray-250'));
+          
+          btn.classList.add('active', 'bg-primary', 'text-white', 'border-primary');
+          btn.classList.remove('bg-slate-50', 'text-gray-600', 'border-gray-250');
+          switchTab(btn.dataset.tab);
+        });
+      });
+
+      // Initial tab load
+      if (grid) switchTab('accounts');
+
+      // 5. Testimonial Carousel Deck
+      const slides = document.querySelectorAll('.testimonial-slide');
+      const prevBtn = document.getElementById('prev-testimonial');
+      const nextBtn = document.getElementById('next-testimonial');
+      let currentSlide = 0;
+
+      if (slides.length > 0) {
+        const showSlide = (index) => {
+          slides.forEach((slide) => slide.classList.remove('active'));
+          slides[index].classList.add('active');
+        };
+
+        if (prevBtn) {
+          prevBtn.addEventListener('click', () => {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+          });
+        }
+        if (nextBtn) {
+          nextBtn.addEventListener('click', () => {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+          });
+        }
       }
     });
   </script>
