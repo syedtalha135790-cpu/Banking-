@@ -181,6 +181,27 @@ class AdminAccountController extends Controller
         $account->status = $account->status === 'active' ? 'inactive' : 'active';
         $account->save();
 
+        // Trigger Notification
+        $title = $account->status === 'active' ? 'Account Activated' : 'Account Deactivated';
+        $message = $account->status === 'active' 
+            ? "Your bank account ending in " . substr($account->account_number, -4) . " has been successfully Activated."
+            : "Your bank account ending in " . substr($account->account_number, -4) . " has been suspended / Deactivated.";
+
+        \App\Services\NotificationService::send(
+            $account->user_id,
+            $title,
+            $message,
+            'account',
+            $account->account_number,
+            [
+                'details' => [
+                    'Account Number' => '••••  ••••  ••••  ' . substr($account->account_number, -4),
+                    'Account Status' => ucfirst($account->status),
+                    'Action Date' => now()->toDateString(),
+                ]
+            ]
+        );
+
         return redirect()->route('admin.accounts.details', $account->id)->with('success', "Account status toggled to {$account->status}.");
     }
 

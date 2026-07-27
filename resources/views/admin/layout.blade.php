@@ -133,6 +133,11 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link @if(Route::is('admin.notifications.index')) active @endif" href="{{ route('admin.notifications.index') }}">
+                        <i class="bi bi-chat-left-text"></i> Notification Logs
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link @if(Route::is('admin.users.create')) active @endif" href="{{ route('admin.users.create') }}">
                         <i class="bi bi-person-plus"></i> Create User
                     </a>

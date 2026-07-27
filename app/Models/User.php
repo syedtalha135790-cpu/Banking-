@@ -70,4 +70,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(CardRequest::class);
     }
+
+    /**
+     * Get the notifications registered to the user.
+     */
+    public function notifications()
+    {
+        return $this->hasMany(Notification::class);
+    }
 }

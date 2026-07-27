@@ -68,6 +68,24 @@ class TransactionController extends Controller
 
             DB::commit();
 
+            // Trigger alert notification
+            \App\Services\NotificationService::send(
+                $account->user_id,
+                'Successful Deposit Alert',
+                "A cash deposit of {$request->amount} has been successfully credited to your account.",
+                'transaction',
+                $refNumber,
+                [
+                    'details' => [
+                        'Account Number' => '••••  ••••  ••••  ' . substr($account->account_number, -4),
+                        'Deposit Amount' => number_format($request->amount, 2),
+                        'Updated Balance' => number_format($account->balance, 2),
+                        'Transaction Reference' => $refNumber,
+                        'Date & Time' => now()->toDateTimeString(),
+                    ]
+                ]
+            );
+
             $redirectRoute = Auth::user()->role === 'admin' 
                 ? redirect()->route('admin.transactions.index')
                 : redirect()->route('customer.account.details', $account->id);
@@ -139,6 +157,24 @@ class TransactionController extends Controller
             ]);
 
             DB::commit();
+
+            // Trigger alert notification
+            \App\Services\NotificationService::send(
+                $account->user_id,
+                'Successful Withdrawal Alert',
+                "A cash withdrawal of {$request->amount} has been successfully completed from your account.",
+                'transaction',
+                $refNumber,
+                [
+                    'details' => [
+                        'Account Number' => '••••  ••••  ••••  ' . substr($account->account_number, -4),
+                        'Withdrawal Amount' => number_format($request->amount, 2),
+                        'Remaining Balance' => number_format($account->balance, 2),
+                        'Transaction Reference' => $refNumber,
+                        'Date & Time' => now()->toDateTimeString(),
+                    ]
+                ]
+            );
 
             $redirectRoute = Auth::user()->role === 'admin' 
                 ? redirect()->route('admin.transactions.index')
@@ -251,6 +287,52 @@ class TransactionController extends Controller
             ]);
 
             DB::commit();
+
+            // Load users for notification details
+            $senderUser = $sender->user()->first();
+            $receiverUser = $receiver->user()->first();
+
+            // Trigger Alert for Sender
+            if ($senderUser) {
+                \App\Services\NotificationService::send(
+                    $senderUser->id,
+                    'Funds Sent Alert',
+                    "You have successfully transferred {$request->amount} to {$receiverUser->name}.",
+                    'transaction',
+                    $refNumber,
+                    [
+                        'details' => [
+                            'Amount Sent' => number_format($request->amount, 2),
+                            'Receiver Name' => $receiverUser->name,
+                            'Receiver Account' => '••••  ••••  ••••  ' . substr($receiver->account_number, -4),
+                            'Updated Balance' => number_format($sender->balance, 2),
+                            'Reference Number' => $refNumber,
+                            'Date & Time' => now()->toDateTimeString(),
+                        ]
+                    ]
+                );
+            }
+
+            // Trigger Alert for Receiver
+            if ($receiverUser) {
+                \App\Services\NotificationService::send(
+                    $receiverUser->id,
+                    'Funds Received Alert',
+                    "You have received {$request->amount} from {$senderUser->name}.",
+                    'transaction',
+                    $refNumber,
+                    [
+                        'details' => [
+                            'Amount Received' => number_format($request->amount, 2),
+                            'Sender Name' => $senderUser->name,
+                            'Sender Account' => '••••  ••••  ••••  ' . substr($sender->account_number, -4),
+                            'Updated Balance' => number_format($receiver->balance, 2),
+                            'Reference Number' => $refNumber,
+                            'Date & Time' => now()->toDateTimeString(),
+                        ]
+                    ]
+                );
+            }
 
             $redirectRoute = Auth::user()->role === 'admin' 
                 ? redirect()->route('admin.transactions.index')

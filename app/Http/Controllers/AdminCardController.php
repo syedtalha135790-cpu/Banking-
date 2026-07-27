@@ -125,6 +125,24 @@ class AdminCardController extends Controller
             'request_status' => 'approved',
         ]);
 
+        // Trigger Card Approved Notification
+        \App\Services\NotificationService::send(
+            $cardRequest->user_id,
+            'Card Request Approved',
+            "Congratulations! Your request for a new " . ucfirst($cardRequest->card_type) . " card has been approved.",
+            'card',
+            'CARD-REQ-' . $cardRequest->id,
+            [
+                'details' => [
+                    'Card Category' => ucfirst($cardRequest->card_type) . ' Card',
+                    'Card Network' => strtoupper($cardRequest->card_network),
+                    'Evaluation Status' => 'Approved',
+                    'Delivery Target' => $cardRequest->delivery_address,
+                    'Date Approved' => now()->toDateString(),
+                ]
+            ]
+        );
+
         return redirect()->route('admin.cards.index')->with('success', 'Card request approved. Card generated successfully.');
     }
 
@@ -142,6 +160,23 @@ class AdminCardController extends Controller
         $cardRequest->update([
             'request_status' => 'rejected',
         ]);
+
+        // Trigger Card Rejected Notification
+        \App\Services\NotificationService::send(
+            $cardRequest->user_id,
+            'Card Request Rejected',
+            "We regret to inform you that your request for a " . ucfirst($cardRequest->card_type) . " card request ID #{$cardRequest->id} has been rejected.",
+            'card',
+            'CARD-REQ-' . $cardRequest->id,
+            [
+                'details' => [
+                    'Card Category' => ucfirst($cardRequest->card_type) . ' Card',
+                    'Card Network' => strtoupper($cardRequest->card_network),
+                    'Evaluation Status' => 'Rejected',
+                    'Review Date' => now()->toDateString(),
+                ]
+            ]
+        );
 
         return redirect()->route('admin.cards.index')->with('success', 'Card request rejected.');
     }

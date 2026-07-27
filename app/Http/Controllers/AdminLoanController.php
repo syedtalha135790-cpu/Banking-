@@ -155,6 +155,26 @@ class AdminLoanController extends Controller
             }
 
             DB::commit();
+
+            // Trigger Loan Approved Notification
+            \App\Services\NotificationService::send(
+                $loan->user_id,
+                'Loan Application Approved',
+                "Congratulations! Your loan request for " . number_format($loan->amount, 2) . " has been approved and disbursed.",
+                'loan',
+                'LOAN-' . $loan->id,
+                [
+                    'details' => [
+                        'Loan Type' => ucfirst($loan->loan_type) . ' Loan',
+                        'Approved Amount' => number_format($loan->amount, 2),
+                        'Interest Rate' => $loan->interest_rate . '%',
+                        'EMI Amount (Monthly)' => number_format($loan->monthly_emi, 2),
+                        'Duration' => $loan->duration . ' Months',
+                        'Disbursement Date' => now()->toDateString(),
+                    ]
+                ]
+            );
+
             return redirect()->route('admin.loans.index')->with('success', "Loan application approved and {$amount} disbursed successfully.");
         } catch (\Exception $e) {
             DB::rollBack();
@@ -174,6 +194,23 @@ class AdminLoanController extends Controller
         }
 
         $loan->update(['status' => 'rejected']);
+
+        // Trigger Loan Rejected Notification
+        \App\Services\NotificationService::send(
+            $loan->user_id,
+            'Loan Application Rejected',
+            "We regret to inform you that your application for " . ucfirst($loan->loan_type) . " loan ID #{$loan->id} has been rejected after compliance evaluation.",
+            'loan',
+            'LOAN-' . $loan->id,
+            [
+                'details' => [
+                    'Loan Category' => ucfirst($loan->loan_type) . ' Loan',
+                    'Requested Amount' => number_format($loan->amount, 2),
+                    'Evaluation Status' => 'Rejected',
+                    'Review Date' => now()->toDateString(),
+                ]
+            ]
+        );
 
         return redirect()->route('admin.loans.index')->with('success', 'Loan application rejected.');
     }

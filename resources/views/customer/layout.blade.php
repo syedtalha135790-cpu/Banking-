@@ -143,6 +143,16 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link @if(Route::is('customer.cards.index') || Route::is('customer.cards.requestDebit') || Route::is('customer.cards.requestCredit') || Route::is('customer.cards.track')) active @endif" href="{{ route('customer.cards.index') }}">
+                        <i class="bi bi-credit-card"></i> Cards & Payments
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link @if(Route::is('customer.notifications.index')) active @endif" href="{{ route('customer.notifications.index') }}">
+                        <i class="bi bi-bell"></i> Alerts & Notifications
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link @if(Route::is('customer.profile.edit')) active @endif" href="{{ route('customer.profile.edit') }}">
                         <i class="bi bi-person-gear"></i> Edit Profile
                     </a>
@@ -175,8 +185,53 @@
                 </button>
                 <h4 class="m-0 fw-bold text-slate-800">@yield('page_title', 'Dashboard')</h4>
             </div>
+            
+            @php
+                $unreadNotificationsCount = \App\Models\Notification::where('user_id', Auth::id())->unread()->count();
+                $recentNotifications = \App\Models\Notification::where('user_id', Auth::id())->orderBy('id', 'desc')->take(5)->get();
+            @endphp
+
             <div class="d-flex align-items-center gap-2">
-                <span class="badge bg-success-subtle text-success border border-success-subtle rounded-pill px-3 py-2 fw-semibold">Customer Account</span>
+                <!-- Notifications Dropdown Bell -->
+                <div class="dropdown me-3">
+                    <button class="btn btn-link text-dark p-0 position-relative" type="button" id="notificationDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="text-decoration: none; box-shadow: none;">
+                        <i class="bi bi-bell fs-4"></i>
+                        @if($unreadNotificationsCount > 0)
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger border border-light" style="padding: 4px 6px; font-size: 9px;">
+                                {{ $unreadNotificationsCount }}
+                            </span>
+                        @endif
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end shadow border border-light-subtle rounded-4 p-3" aria-labelledby="notificationDropdown" style="width: 320px; font-size: 13px; margin-top: 10px;">
+                        <li class="d-flex justify-content-between align-items-center mb-2 pb-2 border-bottom">
+                            <span class="fw-bold text-dark">Recent Alerts</span>
+                            @if($unreadNotificationsCount > 0)
+                                <form action="{{ route('customer.notifications.markAllRead') }}" method="POST" class="m-0">
+                                    @csrf
+                                    <button type="submit" class="btn btn-link text-primary text-xs p-0 text-decoration-none" style="font-size: 11px;">Mark all read</button>
+                                </form>
+                            @endif
+                        </li>
+                        @forelse($recentNotifications as $notif)
+                            <li class="mb-2 pb-2 border-bottom rounded p-1 {{ !$notif->is_read ? 'bg-light fw-semibold' : '' }}">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <span class="text-xs text-dark text-truncate" style="max-width: 180px;">{{ $notif->title }}</span>
+                                    <span class="text-2xs text-muted" style="font-size: 9px;">{{ $notif->created_at->diffForHumans() }}</span>
+                                </div>
+                                <div class="text-muted text-xs text-truncate mt-1" style="max-width: 280px; font-size: 11px;">
+                                    {{ $notif->message }}
+                                </div>
+                            </li>
+                        @empty
+                            <li class="text-center py-3 text-muted text-xs">No recent notifications.</li>
+                        @endforelse
+                        <li class="text-center pt-2">
+                            <a href="{{ route('customer.notifications.index') }}" class="text-primary fw-bold text-xs text-decoration-none">View All Alerts</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <span class="badge bg-success-subtle text-success border border-success-subtle rounded-pill px-3 py-2 fw-semibold d-none d-sm-inline-block">Customer Account</span>
                 <div class="d-flex align-items-center gap-2 ms-2">
                     <div class="bg-secondary rounded-circle text-white d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; font-weight: 600;">
                         {{ substr(Auth::user()->name, 0, 2) }}

@@ -119,6 +119,10 @@ Route::middleware(['auth', 'verified', 'admin'])->prefix('admin')->name('admin.'
     Route::post('/cards/{id}/reject', [\App\Http\Controllers\AdminCardController::class, 'reject'])->name('cards.reject');
     Route::post('/cards/{id}/toggle-status', [\App\Http\Controllers\AdminCardController::class, 'toggleStatus'])->name('cards.toggleStatus');
     Route::post('/cards/{id}/delivery-status', [\App\Http\Controllers\AdminCardController::class, 'updateDeliveryStatus'])->name('cards.deliveryStatus');
+
+    // Notification Logs
+    Route::get('/notifications', [\App\Http\Controllers\AdminNotificationController::class, 'index'])->name('notifications.index');
+    Route::post('/notifications/{id}/resend', [\App\Http\Controllers\AdminNotificationController::class, 'resend'])->name('notifications.resend');
 });
 
 // Customer Route Group
@@ -180,4 +184,10 @@ Route::middleware(['auth', 'verified', 'customer'])->prefix('customer')->name('c
     Route::post('/cards/{id}/block', [\App\Http\Controllers\CardController::class, 'block'])->name('cards.block');
     Route::post('/cards/{id}/replace', [\App\Http\Controllers\CardController::class, 'replace'])->name('cards.replace');
     Route::get('/cards/{id}/track', [\App\Http\Controllers\CardController::class, 'track'])->name('cards.track');
+
+    // Notification Center self service
+    Route::get('/notifications', [\App\Http\Controllers\NotificationController::class, 'index'])->name('notifications.index');
+    Route::post('/notifications/{id}/read', [\App\Http\Controllers\NotificationController::class, 'read'])->name('notifications.read');
+    Route::delete('/notifications/{id}', [\App\Http\Controllers\NotificationController::class, 'destroy'])->name('notifications.delete');
+    Route::post('/notifications/mark-all-read', [\App\Http\Controllers\NotificationController::class, 'markAllRead'])->name('notifications.markAllRead');
 });
