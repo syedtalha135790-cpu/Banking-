@@ -126,6 +126,14 @@ Route::middleware(['auth', 'verified', 'admin'])->prefix('admin')->name('admin.'
 
     // Reports Engine logs
     Route::get('/reports', [\App\Http\Controllers\AdminDashboardController::class, 'reports'])->name('reports');
+
+    // Live Search & Advanced Filters
+    Route::get('/search', [\App\Http\Controllers\SearchController::class, 'index'])->name('search.index');
+    Route::get('/search/users', [\App\Http\Controllers\SearchController::class, 'users'])->name('search.users');
+    Route::get('/search/accounts', [\App\Http\Controllers\SearchController::class, 'accounts'])->name('search.accounts');
+    Route::get('/search/transactions', [\App\Http\Controllers\SearchController::class, 'transactions'])->name('search.transactions');
+    Route::get('/search/loans', [\App\Http\Controllers\SearchController::class, 'loans'])->name('search.loans');
+    Route::get('/search/cards', [\App\Http\Controllers\SearchController::class, 'cards'])->name('search.cards');
 });
 
 // Customer Route Group
