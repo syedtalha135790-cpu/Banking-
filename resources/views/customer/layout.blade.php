@@ -113,6 +113,26 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link @if(Route::is('customer.deposit')) active @endif" href="{{ route('customer.deposit') }}">
+                        <i class="bi bi-cash-coin"></i> Deposit Money
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link @if(Route::is('customer.withdraw')) active @endif" href="{{ route('customer.withdraw') }}">
+                        <i class="bi bi-cash-stack"></i> Withdraw Money
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link @if(Route::is('customer.transfer')) active @endif" href="{{ route('customer.transfer') }}">
+                        <i class="bi bi-arrow-left-right"></i> Transfer Funds
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link @if(Route::is('customer.transactions.index') || Route::is('customer.transactions.receipt')) active @endif" href="{{ route('customer.transactions.index') }}">
+                        <i class="bi bi-list-columns-reverse"></i> My Transactions
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link @if(Route::is('customer.profile.edit')) active @endif" href="{{ route('customer.profile.edit') }}">
                         <i class="bi bi-person-gear"></i> Edit Profile
                     </a>

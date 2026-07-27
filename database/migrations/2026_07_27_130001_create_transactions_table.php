@@ -14,9 +14,14 @@ return new class extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('account_id')->constrained()->onDelete('cascade');
-            $table->string('type'); // deposit, withdrawal
+            $table->foreignId('sender_account_id')->nullable()->constrained('accounts')->onDelete('set null');
+            $table->foreignId('receiver_account_id')->nullable()->constrained('accounts')->onDelete('set null');
+            $table->string('transaction_type'); // deposit, withdrawal, transfer_in, transfer_out
             $table->decimal('amount', 15, 2);
+            $table->decimal('balance_after_transaction', 15, 2);
             $table->string('description')->nullable();
+            $table->string('status')->default('completed'); // completed, failed, pending
+            $table->string('reference_number')->unique();
             $table->timestamps();
         });
     }

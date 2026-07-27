@@ -113,6 +113,11 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link @if(Route::is('admin.transactions.index') || Route::is('admin.transactions.show')) active @endif" href="{{ route('admin.transactions.index') }}">
+                        <i class="bi bi-list-columns-reverse"></i> View Transactions
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link @if(Route::is('admin.users.create')) active @endif" href="{{ route('admin.users.create') }}">
                         <i class="bi bi-person-plus"></i> Create User
                     </a>

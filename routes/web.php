@@ -68,6 +68,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
 // Admin Route Group
+// Admin Route Group
 Route::middleware(['auth', 'verified', 'admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', [\App\Http\Controllers\AdminDashboardController::class, 'index'])->name('dashboard');
     Route::get('/users/create', [\App\Http\Controllers\AdminDashboardController::class, 'createUserForm'])->name('users.create');
@@ -91,6 +92,11 @@ Route::middleware(['auth', 'verified', 'admin'])->prefix('admin')->name('admin.'
     // Transactions triggers
     Route::post('/accounts/{id}/deposit', [\App\Http\Controllers\AccountController::class, 'deposit'])->name('accounts.deposit');
     Route::post('/accounts/{id}/withdraw', [\App\Http\Controllers\AccountController::class, 'withdraw'])->name('accounts.withdraw');
+
+    // Transactions Audits & Exports
+    Route::get('/transactions', [\App\Http\Controllers\AdminTransactionController::class, 'index'])->name('transactions.index');
+    Route::get('/transactions/export', [\App\Http\Controllers\AdminTransactionController::class, 'exportCsv'])->name('transactions.export');
+    Route::get('/transactions/{id}', [\App\Http\Controllers\AdminTransactionController::class, 'show'])->name('transactions.show');
 });
 
 // Customer Route Group
@@ -115,4 +121,14 @@ Route::middleware(['auth', 'verified', 'customer'])->prefix('customer')->name('c
     Route::post('/accounts/{id}/deposit', [\App\Http\Controllers\AccountController::class, 'deposit'])->name('accounts.deposit');
     Route::get('/accounts/{id}/withdraw', [\App\Http\Controllers\CustomerAccountController::class, 'showWithdrawForm'])->name('accounts.withdraw.form');
     Route::post('/accounts/{id}/withdraw', [\App\Http\Controllers\AccountController::class, 'withdraw'])->name('accounts.withdraw');
+
+    // Transactions General Portals
+    Route::get('/deposit', [\App\Http\Controllers\CustomerTransactionController::class, 'depositForm'])->name('deposit');
+    Route::post('/deposit', [\App\Http\Controllers\TransactionController::class, 'deposit'])->name('deposit.post');
+    Route::get('/withdraw', [\App\Http\Controllers\CustomerTransactionController::class, 'withdrawForm'])->name('withdraw');
+    Route::post('/withdraw', [\App\Http\Controllers\TransactionController::class, 'withdraw'])->name('withdraw.post');
+    Route::get('/transfer', [\App\Http\Controllers\CustomerTransactionController::class, 'transferForm'])->name('transfer');
+    Route::post('/transfer', [\App\Http\Controllers\TransactionController::class, 'transfer'])->name('transfer.post');
+    Route::get('/transactions', [\App\Http\Controllers\CustomerTransactionController::class, 'index'])->name('transactions.index');
+    Route::get('/transactions/{id}/receipt', [\App\Http\Controllers\CustomerTransactionController::class, 'receipt'])->name('transactions.receipt');
 });
