@@ -133,6 +133,11 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link @if(Route::is('customer.beneficiaries.index') || Route::is('customer.beneficiaries.create') || Route::is('customer.beneficiaries.edit')) active @endif" href="{{ route('customer.beneficiaries.index') }}">
+                        <i class="bi bi-people"></i> Manage Beneficiaries
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link @if(Route::is('customer.profile.edit')) active @endif" href="{{ route('customer.profile.edit') }}">
                         <i class="bi bi-person-gear"></i> Edit Profile
                     </a>

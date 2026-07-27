@@ -38,4 +38,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(Account::class);
     }
+
+    /**
+     * Get the beneficiaries registered by the user.
+     */
+    public function beneficiaries()
+    {
+        return $this->hasMany(Beneficiary::class);
+    }
 }

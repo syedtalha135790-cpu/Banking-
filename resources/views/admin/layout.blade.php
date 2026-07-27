@@ -118,6 +118,11 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link @if(Route::is('admin.beneficiaries.index') || Route::is('admin.beneficiaries.show')) active @endif" href="{{ route('admin.beneficiaries.index') }}">
+                        <i class="bi bi-person-check"></i> Beneficiary Approvals
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link @if(Route::is('admin.users.create')) active @endif" href="{{ route('admin.users.create') }}">
                         <i class="bi bi-person-plus"></i> Create User
                     </a>

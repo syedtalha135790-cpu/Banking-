@@ -175,6 +175,18 @@ class TransactionController extends Controller
             abort(403, 'Unauthorized account access.');
         }
 
+        // Customer Transfer Rule: Must transfer only to verified beneficiaries
+        if (Auth::user()->role === 'customer') {
+            $isVerifiedBeneficiary = \App\Models\Beneficiary::where('user_id', Auth::id())
+                ->where('account_number', $request->receiver_account_number)
+                ->where('verification_status', 'verified')
+                ->exists();
+
+            if (!$isVerifiedBeneficiary) {
+                return back()->withErrors(['receiver_account_number' => 'You can only transfer funds to verified beneficiaries. Please add and verify this account first.'])->withInput();
+            }
+        }
+
         if (!$sender->isActive()) {
             return back()->withErrors(['sender_account_number' => 'Transfer failed. Sender account is Inactive.'])->withInput();
         }

@@ -97,6 +97,13 @@ Route::middleware(['auth', 'verified', 'admin'])->prefix('admin')->name('admin.'
     Route::get('/transactions', [\App\Http\Controllers\AdminTransactionController::class, 'index'])->name('transactions.index');
     Route::get('/transactions/export', [\App\Http\Controllers\AdminTransactionController::class, 'exportCsv'])->name('transactions.export');
     Route::get('/transactions/{id}', [\App\Http\Controllers\AdminTransactionController::class, 'show'])->name('transactions.show');
+
+    // Beneficiary Audits
+    Route::get('/beneficiaries', [\App\Http\Controllers\AdminBeneficiaryController::class, 'index'])->name('beneficiaries.index');
+    Route::get('/beneficiaries/{id}', [\App\Http\Controllers\AdminBeneficiaryController::class, 'show'])->name('beneficiaries.show');
+    Route::post('/beneficiaries/{id}/verify', [\App\Http\Controllers\AdminBeneficiaryController::class, 'verify'])->name('beneficiaries.verify');
+    Route::post('/beneficiaries/{id}/reject', [\App\Http\Controllers\AdminBeneficiaryController::class, 'reject'])->name('beneficiaries.reject');
+    Route::delete('/beneficiaries/{id}', [\App\Http\Controllers\AdminBeneficiaryController::class, 'destroy'])->name('beneficiaries.delete');
 });
 
 // Customer Route Group
@@ -131,4 +138,12 @@ Route::middleware(['auth', 'verified', 'customer'])->prefix('customer')->name('c
     Route::post('/transfer', [\App\Http\Controllers\TransactionController::class, 'transfer'])->name('transfer.post');
     Route::get('/transactions', [\App\Http\Controllers\CustomerTransactionController::class, 'index'])->name('transactions.index');
     Route::get('/transactions/{id}/receipt', [\App\Http\Controllers\CustomerTransactionController::class, 'receipt'])->name('transactions.receipt');
+
+    // Beneficiary CRUD
+    Route::get('/beneficiaries', [\App\Http\Controllers\BeneficiaryController::class, 'index'])->name('beneficiaries.index');
+    Route::get('/beneficiaries/create', [\App\Http\Controllers\BeneficiaryController::class, 'create'])->name('beneficiaries.create');
+    Route::post('/beneficiaries', [\App\Http\Controllers\BeneficiaryController::class, 'store'])->name('beneficiaries.store');
+    Route::get('/beneficiaries/{id}/edit', [\App\Http\Controllers\BeneficiaryController::class, 'edit'])->name('beneficiaries.edit');
+    Route::put('/beneficiaries/{id}', [\App\Http\Controllers\BeneficiaryController::class, 'update'])->name('beneficiaries.update');
+    Route::delete('/beneficiaries/{id}', [\App\Http\Controllers\BeneficiaryController::class, 'destroy'])->name('beneficiaries.delete');
 });
