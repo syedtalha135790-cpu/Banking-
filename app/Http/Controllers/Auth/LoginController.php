@@ -55,9 +55,12 @@ class LoginController extends Controller
                     ->withErrors(['otp' => 'Please verify your email/phone to activate your account. A fresh OTP has been sent.']);
             }
 
-            // Intended page or dashboard
+            // Redirect based on role
             $request->session()->regenerate();
-            return redirect()->intended(route('dashboard'));
+            if ($user->role === 'admin') {
+                return redirect()->intended(route('admin.dashboard'));
+            }
+            return redirect()->intended(route('customer.dashboard'));
         }
 
         return back()->withErrors([

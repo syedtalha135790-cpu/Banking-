@@ -57,20 +57,33 @@ Route::post('/verify-otp/resend', [VerificationController::class, 'resend'])->na
 // Logout Route
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-// Authenticated & Activated Customer Dashboard (Protected)
+// General Dashboard Redirect Route
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', function () {
-        return view('frontend.dashboard');
+        if (\Illuminate\Support\Facades\Auth::user()->role === 'admin') {
+            return redirect()->route('admin.dashboard');
+        }
+        return redirect()->route('customer.dashboard');
     })->name('dashboard');
-
-    Route::get('/transactions', function () {
-        return view('frontend.transactions');
-    })->name('transactions');
 });
 
-// Admin-Only Panel (Protected by base session auth)
-Route::middleware('auth')->group(function () {
-    Route::get('/admin', function () {
-        return view('backend.admin');
-    })->name('admin');
+// Admin Route Group
+Route::middleware(['auth', 'verified', 'admin'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/dashboard', [\App\Http\Controllers\AdminDashboardController::class, 'index'])->name('dashboard');
+    Route::get('/users/create', [\App\Http\Controllers\AdminDashboardController::class, 'createUserForm'])->name('users.create');
+    Route::post('/users', [\App\Http\Controllers\AdminDashboardController::class, 'storeUser'])->name('users.store');
+    Route::get('/users/{id}/edit', [\App\Http\Controllers\AdminDashboardController::class, 'editUserForm'])->name('users.edit');
+    Route::put('/users/{id}', [\App\Http\Controllers\AdminDashboardController::class, 'updateUser'])->name('users.update');
+    Route::delete('/users/{id}', [\App\Http\Controllers\AdminDashboardController::class, 'deleteUser'])->name('users.delete');
+    Route::get('/profile', [\App\Http\Controllers\AdminDashboardController::class, 'profile'])->name('profile');
+    Route::put('/profile', [\App\Http\Controllers\AdminDashboardController::class, 'updateProfile'])->name('profile.update');
+});
+
+// Customer Route Group
+Route::middleware(['auth', 'verified', 'customer'])->prefix('customer')->name('customer.')->group(function () {
+    Route::get('/dashboard', [\App\Http\Controllers\CustomerDashboardController::class, 'index'])->name('dashboard');
+    Route::get('/profile/edit', [\App\Http\Controllers\CustomerDashboardController::class, 'editProfileForm'])->name('profile.edit');
+    Route::put('/profile', [\App\Http\Controllers\CustomerDashboardController::class, 'updateProfile'])->name('profile.update');
+    Route::get('/password/change', [\App\Http\Controllers\CustomerDashboardController::class, 'changePasswordForm'])->name('password.change');
+    Route::put('/password', [\App\Http\Controllers\CustomerDashboardController::class, 'updatePassword'])->name('password.update');
 });
