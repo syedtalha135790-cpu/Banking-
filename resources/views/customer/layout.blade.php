@@ -138,6 +138,11 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link @if(Route::is('customer.loans.index') || Route::is('customer.loans.apply') || Route::is('customer.loans.show') || Route::is('customer.loans.payments')) active @endif" href="{{ route('customer.loans.index') }}">
+                        <i class="bi bi-cash-stack"></i> Loans & Repayments
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link @if(Route::is('customer.profile.edit')) active @endif" href="{{ route('customer.profile.edit') }}">
                         <i class="bi bi-person-gear"></i> Edit Profile
                     </a>

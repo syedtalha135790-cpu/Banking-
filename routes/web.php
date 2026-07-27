@@ -104,6 +104,13 @@ Route::middleware(['auth', 'verified', 'admin'])->prefix('admin')->name('admin.'
     Route::post('/beneficiaries/{id}/verify', [\App\Http\Controllers\AdminBeneficiaryController::class, 'verify'])->name('beneficiaries.verify');
     Route::post('/beneficiaries/{id}/reject', [\App\Http\Controllers\AdminBeneficiaryController::class, 'reject'])->name('beneficiaries.reject');
     Route::delete('/beneficiaries/{id}', [\App\Http\Controllers\AdminBeneficiaryController::class, 'destroy'])->name('beneficiaries.delete');
+
+    // Loan Management review & approvals
+    Route::get('/loans', [\App\Http\Controllers\AdminLoanController::class, 'index'])->name('loans.index');
+    Route::get('/loans/{id}', [\App\Http\Controllers\AdminLoanController::class, 'show'])->name('loans.show');
+    Route::post('/loans/{id}/review', [\App\Http\Controllers\AdminLoanController::class, 'underReview'])->name('loans.review');
+    Route::post('/loans/{id}/approve', [\App\Http\Controllers\AdminLoanController::class, 'approve'])->name('loans.approve');
+    Route::post('/loans/{id}/reject', [\App\Http\Controllers\AdminLoanController::class, 'reject'])->name('loans.reject');
 });
 
 // Customer Route Group
@@ -146,4 +153,13 @@ Route::middleware(['auth', 'verified', 'customer'])->prefix('customer')->name('c
     Route::get('/beneficiaries/{id}/edit', [\App\Http\Controllers\BeneficiaryController::class, 'edit'])->name('beneficiaries.edit');
     Route::put('/beneficiaries/{id}', [\App\Http\Controllers\BeneficiaryController::class, 'update'])->name('beneficiaries.update');
     Route::delete('/beneficiaries/{id}', [\App\Http\Controllers\BeneficiaryController::class, 'destroy'])->name('beneficiaries.delete');
+
+    // Loan Management self service
+    Route::get('/loans', [\App\Http\Controllers\LoanController::class, 'index'])->name('loans.index');
+    Route::get('/loans/apply', [\App\Http\Controllers\LoanController::class, 'applyForm'])->name('loans.apply');
+    Route::post('/loans', [\App\Http\Controllers\LoanController::class, 'storeApplication'])->name('loans.store');
+    Route::get('/loans/{id}', [\App\Http\Controllers\LoanController::class, 'show'])->name('loans.show');
+    Route::get('/loan-payments', [\App\Http\Controllers\LoanPaymentController::class, 'index'])->name('loans.payments');
+    Route::post('/loan-payments/{id}/pay', [\App\Http\Controllers\LoanPaymentController::class, 'pay'])->name('loans.pay');
+    Route::get('/loan-payments/{id}/receipt', [\App\Http\Controllers\LoanPaymentController::class, 'receipt'])->name('loans.receipt');
 });

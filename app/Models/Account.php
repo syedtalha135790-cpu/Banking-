@@ -62,4 +62,12 @@ class Account extends Model
     {
         return $this->status === 'active';
     }
+
+    /**
+     * Get the loans associated with the account.
+     */
+    public function loans()
+    {
+        return $this->hasMany(Loan::class);
+    }
 }

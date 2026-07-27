@@ -123,6 +123,11 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link @if(Route::is('admin.loans.index') || Route::is('admin.loans.show')) active @endif" href="{{ route('admin.loans.index') }}">
+                        <i class="bi bi-cash"></i> Loan Management
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link @if(Route::is('admin.users.create')) active @endif" href="{{ route('admin.users.create') }}">
                         <i class="bi bi-person-plus"></i> Create User
                     </a>

@@ -46,4 +46,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(Beneficiary::class);
     }
+
+    /**
+     * Get the loans associated with the user.
+     */
+    public function loans()
+    {
+        return $this->hasMany(Loan::class);
+    }
 }
