@@ -123,6 +123,9 @@ Route::middleware(['auth', 'verified', 'admin'])->prefix('admin')->name('admin.'
     // Notification Logs
     Route::get('/notifications', [\App\Http\Controllers\AdminNotificationController::class, 'index'])->name('notifications.index');
     Route::post('/notifications/{id}/resend', [\App\Http\Controllers\AdminNotificationController::class, 'resend'])->name('notifications.resend');
+
+    // Reports Engine logs
+    Route::get('/reports', [\App\Http\Controllers\AdminDashboardController::class, 'reports'])->name('reports');
 });
 
 // Customer Route Group

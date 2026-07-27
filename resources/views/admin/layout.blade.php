@@ -138,6 +138,11 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link @if(Route::is('admin.reports')) active @endif" href="{{ route('admin.reports') }}">
+                        <i class="bi bi-graph-up-arrow"></i> System Reports
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link @if(Route::is('admin.users.create')) active @endif" href="{{ route('admin.users.create') }}">
                         <i class="bi bi-person-plus"></i> Create User
                     </a>
