@@ -70,4 +70,12 @@ class Account extends Model
     {
         return $this->hasMany(Loan::class);
     }
+
+    /**
+     * Get the cards associated with the account.
+     */
+    public function cards()
+    {
+        return $this->hasMany(Card::class);
+    }
 }

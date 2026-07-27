@@ -54,4 +54,20 @@ class User extends Authenticatable
     {
         return $this->hasMany(Loan::class);
     }
+
+    /**
+     * Get the cards registered to the user.
+     */
+    public function cards()
+    {
+        return $this->hasMany(Card::class);
+    }
+
+    /**
+     * Get the card requests submitted by the user.
+     */
+    public function cardRequests()
+    {
+        return $this->hasMany(CardRequest::class);
+    }
 }

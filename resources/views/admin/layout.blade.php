@@ -128,6 +128,11 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link @if(Route::is('admin.cards.index') || Route::is('admin.cards.show')) active @endif" href="{{ route('admin.cards.index') }}">
+                        <i class="bi bi-credit-card"></i> Card Management
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link @if(Route::is('admin.users.create')) active @endif" href="{{ route('admin.users.create') }}">
                         <i class="bi bi-person-plus"></i> Create User
                     </a>

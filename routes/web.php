@@ -111,6 +111,14 @@ Route::middleware(['auth', 'verified', 'admin'])->prefix('admin')->name('admin.'
     Route::post('/loans/{id}/review', [\App\Http\Controllers\AdminLoanController::class, 'underReview'])->name('loans.review');
     Route::post('/loans/{id}/approve', [\App\Http\Controllers\AdminLoanController::class, 'approve'])->name('loans.approve');
     Route::post('/loans/{id}/reject', [\App\Http\Controllers\AdminLoanController::class, 'reject'])->name('loans.reject');
+
+    // Card Management review & status updates
+    Route::get('/cards', [\App\Http\Controllers\AdminCardController::class, 'index'])->name('cards.index');
+    Route::get('/cards/{id}', [\App\Http\Controllers\AdminCardController::class, 'show'])->name('cards.show');
+    Route::post('/cards/{id}/approve', [\App\Http\Controllers\AdminCardController::class, 'approve'])->name('cards.approve');
+    Route::post('/cards/{id}/reject', [\App\Http\Controllers\AdminCardController::class, 'reject'])->name('cards.reject');
+    Route::post('/cards/{id}/toggle-status', [\App\Http\Controllers\AdminCardController::class, 'toggleStatus'])->name('cards.toggleStatus');
+    Route::post('/cards/{id}/delivery-status', [\App\Http\Controllers\AdminCardController::class, 'updateDeliveryStatus'])->name('cards.deliveryStatus');
 });
 
 // Customer Route Group
@@ -162,4 +170,14 @@ Route::middleware(['auth', 'verified', 'customer'])->prefix('customer')->name('c
     Route::get('/loan-payments', [\App\Http\Controllers\LoanPaymentController::class, 'index'])->name('loans.payments');
     Route::post('/loan-payments/{id}/pay', [\App\Http\Controllers\LoanPaymentController::class, 'pay'])->name('loans.pay');
     Route::get('/loan-payments/{id}/receipt', [\App\Http\Controllers\LoanPaymentController::class, 'receipt'])->name('loans.receipt');
+
+    // Card Management self service
+    Route::get('/cards', [\App\Http\Controllers\CardController::class, 'index'])->name('cards.index');
+    Route::get('/cards/request-debit', [\App\Http\Controllers\CardController::class, 'requestDebitForm'])->name('cards.requestDebit');
+    Route::post('/cards/request-debit', [\App\Http\Controllers\CardController::class, 'storeDebitRequest'])->name('cards.storeDebit');
+    Route::get('/cards/request-credit', [\App\Http\Controllers\CardController::class, 'requestCreditForm'])->name('cards.requestCredit');
+    Route::post('/cards/request-credit', [\App\Http\Controllers\CardController::class, 'storeCreditRequest'])->name('cards.storeCredit');
+    Route::post('/cards/{id}/block', [\App\Http\Controllers\CardController::class, 'block'])->name('cards.block');
+    Route::post('/cards/{id}/replace', [\App\Http\Controllers\CardController::class, 'replace'])->name('cards.replace');
+    Route::get('/cards/{id}/track', [\App\Http\Controllers\CardController::class, 'track'])->name('cards.track');
 });
