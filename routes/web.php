@@ -134,6 +134,11 @@ Route::middleware(['auth', 'verified', 'admin'])->prefix('admin')->name('admin.'
     Route::get('/search/transactions', [\App\Http\Controllers\SearchController::class, 'transactions'])->name('search.transactions');
     Route::get('/search/loans', [\App\Http\Controllers\SearchController::class, 'loans'])->name('search.loans');
     Route::get('/search/cards', [\App\Http\Controllers\SearchController::class, 'cards'])->name('search.cards');
+
+    // Activity Logs System Auditing
+    Route::get('/activity-logs', [\App\Http\Controllers\ActivityLogController::class, 'index'])->name('activity_logs.index');
+    Route::get('/activity-logs/export', [\App\Http\Controllers\ActivityLogController::class, 'exportCsv'])->name('activity_logs.export');
+    Route::get('/activity-logs/{id}', [\App\Http\Controllers\ActivityLogController::class, 'show'])->name('activity_logs.show');
 });
 
 // Customer Route Group

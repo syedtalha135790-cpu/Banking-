@@ -202,6 +202,9 @@ class AdminAccountController extends Controller
             ]
         );
 
+        // Log Account Status change activity
+        \App\Services\ActivityLogger::log('account_status_toggle', 'account', "Admin toggled status of Account {$account->account_number} to " . ucfirst($account->status) . ".", Auth::id(), 'success');
+
         return redirect()->route('admin.accounts.details', $account->id)->with('success', "Account status toggled to {$account->status}.");
     }
 

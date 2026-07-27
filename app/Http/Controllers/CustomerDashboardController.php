@@ -45,6 +45,9 @@ class CustomerDashboardController extends Controller
         $user->phone_number = $request->phone_number;
         $user->save();
 
+        // Log Profile update activity
+        \App\Services\ActivityLogger::log('profile_update', 'profile', "Customer {$user->name} updated profile details.", $user->id, 'success');
+
         return redirect()->route('customer.dashboard')->with('success', 'Profile updated successfully.');
     }
 
@@ -74,6 +77,9 @@ class CustomerDashboardController extends Controller
 
         $user->password = Hash::make($request->password);
         $user->save();
+
+        // Log Password change activity
+        \App\Services\ActivityLogger::log('password_change', 'profile', "Customer {$user->name} changed account password.", $user->id, 'success');
 
         return redirect()->route('customer.dashboard')->with('success', 'Password updated successfully.');
     }

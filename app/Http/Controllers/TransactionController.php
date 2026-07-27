@@ -86,6 +86,8 @@ class TransactionController extends Controller
                 ]
             );
 
+            \App\Services\ActivityLogger::log('deposit', 'transaction', "Deposit of " . number_format($request->amount, 2) . " credited to account {$account->account_number}. Reference: {$refNumber}.", $account->user_id, 'success');
+
             $redirectRoute = Auth::user()->role === 'admin' 
                 ? redirect()->route('admin.transactions.index')
                 : redirect()->route('customer.account.details', $account->id);
@@ -175,6 +177,8 @@ class TransactionController extends Controller
                     ]
                 ]
             );
+
+            \App\Services\ActivityLogger::log('withdrawal', 'transaction', "Withdrawal of " . number_format($request->amount, 2) . " debited from account {$account->account_number}. Reference: {$refNumber}.", $account->user_id, 'success');
 
             $redirectRoute = Auth::user()->role === 'admin' 
                 ? redirect()->route('admin.transactions.index')
@@ -333,6 +337,8 @@ class TransactionController extends Controller
                     ]
                 );
             }
+
+            \App\Services\ActivityLogger::log('transfer', 'transaction', "Transferred " . number_format($request->amount, 2) . " from account {$sender->account_number} to account {$receiver->account_number}. Reference: {$refNumber}.", $sender->user_id, 'success');
 
             $redirectRoute = Auth::user()->role === 'admin' 
                 ? redirect()->route('admin.transactions.index')

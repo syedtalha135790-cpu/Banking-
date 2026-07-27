@@ -58,6 +58,9 @@ class AdminBeneficiaryController extends Controller
             'verified_by' => Auth::id(),
         ]);
 
+        // Log Beneficiary Verified activity
+        \App\Services\ActivityLogger::log('beneficiary_verified', 'beneficiary', "Admin approved and verified beneficiary {$beneficiary->beneficiary_name} (Acc: {$beneficiary->account_number}).", Auth::id(), 'success');
+
         return redirect()->route('admin.beneficiaries.index')->with('success', "Beneficiary link approved successfully.");
     }
 
@@ -72,6 +75,9 @@ class AdminBeneficiaryController extends Controller
             'verified_at' => null,
             'verified_by' => null,
         ]);
+
+        // Log Beneficiary Rejected activity
+        \App\Services\ActivityLogger::log('beneficiary_rejected', 'beneficiary', "Admin rejected beneficiary {$beneficiary->beneficiary_name} (Acc: {$beneficiary->account_number}).", Auth::id(), 'success');
 
         return redirect()->route('admin.beneficiaries.index')->with('success', "Beneficiary link has been rejected.");
     }

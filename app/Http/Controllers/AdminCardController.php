@@ -143,6 +143,9 @@ class AdminCardController extends Controller
             ]
         );
 
+        // Log Card Approved activity
+        \App\Services\ActivityLogger::log('card_approved', 'card', "Admin approved Card Request ID #{$cardRequest->id} (Type: {$cardRequest->card_type}).", Auth::id(), 'success');
+
         return redirect()->route('admin.cards.index')->with('success', 'Card request approved. Card generated successfully.');
     }
 
@@ -178,6 +181,9 @@ class AdminCardController extends Controller
             ]
         );
 
+        // Log Card Rejected activity
+        \App\Services\ActivityLogger::log('card_rejected', 'card', "Admin rejected Card Request ID #{$cardRequest->id}.", Auth::id(), 'success');
+
         return redirect()->route('admin.cards.index')->with('success', 'Card request rejected.');
     }
 
@@ -189,6 +195,9 @@ class AdminCardController extends Controller
         $card = Card::findOrFail($id);
         $newStatus = $card->status === 'active' ? 'blocked' : 'active';
         $card->update(['status' => $newStatus]);
+
+        // Log Card Status toggle activity
+        \App\Services\ActivityLogger::log('card_status_toggle', 'card', "Admin toggled card ending in " . substr($card->card_number, -4) . " status to " . ucfirst($newStatus) . ".", Auth::id(), 'success');
 
         return redirect()->route('admin.cards.index')->with('success', "Card ending in " . substr($card->card_number, -4) . " status updated to " . ucfirst($newStatus) . ".");
     }

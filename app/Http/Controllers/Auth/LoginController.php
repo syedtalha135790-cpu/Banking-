@@ -43,6 +43,9 @@ class LoginController extends Controller
         if (Auth::attempt($credentials, $request->filled('remember'))) {
             $user = Auth::user();
 
+            // Log successful login
+            \App\Services\ActivityLogger::log('login', 'auth', "User {$user->name} logged in successfully.", $user->id, 'success');
+
             // Check if user has verified/activated their account
             if (is_null($user->email_verified_at)) {
                 // Keep verify_email in session, trigger new OTP, and logout
@@ -63,6 +66,9 @@ class LoginController extends Controller
             return redirect()->intended(route('customer.dashboard'));
         }
 
+        // Log failed login attempt
+        \App\Services\ActivityLogger::log('login', 'auth', "Failed login attempt using identifier: {$request->login_identifier}.", null, 'failed');
+
         return back()->withErrors([
             'login_identifier' => 'The provided credentials do not match our records.',
         ])->onlyInput('login_identifier');
@@ -73,6 +79,11 @@ class LoginController extends Controller
      */
     public function logout(Request $request)
     {
+        $user = Auth::user();
+        if ($user) {
+            \App\Services\ActivityLogger::log('logout', 'auth', "User {$user->name} logged out.", $user->id, 'success');
+        }
+
         Auth::logout();
 
         $request->session()->invalidate();

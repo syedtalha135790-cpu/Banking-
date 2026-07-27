@@ -175,6 +175,9 @@ class AdminLoanController extends Controller
                 ]
             );
 
+            // Log Loan Approved activity
+            \App\Services\ActivityLogger::log('loan_approved', 'loan', "Admin approved and disbursed Loan ID #{$loan->id} for amount: " . number_format($loan->amount, 2) . ".", Auth::id(), 'success');
+
             return redirect()->route('admin.loans.index')->with('success', "Loan application approved and {$amount} disbursed successfully.");
         } catch (\Exception $e) {
             DB::rollBack();
@@ -194,6 +197,9 @@ class AdminLoanController extends Controller
         }
 
         $loan->update(['status' => 'rejected']);
+
+        // Log Loan Rejected activity
+        \App\Services\ActivityLogger::log('loan_rejected', 'loan', "Admin rejected Loan application ID #{$loan->id}.", Auth::id(), 'success');
 
         // Trigger Loan Rejected Notification
         \App\Services\NotificationService::send(

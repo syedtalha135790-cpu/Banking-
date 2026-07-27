@@ -191,6 +191,9 @@ class AdminDashboardController extends Controller
             'email_verified_at' => now(), // Auto-activate for administrative ease
         ]);
 
+        // Log User Created activity
+        \App\Services\ActivityLogger::log('user_created', 'admin', "Admin Created User account: {$request->name} ({$request->role}).", Auth::id(), 'success');
+
         return redirect()->route('admin.dashboard')->with('success', 'User account created successfully.');
     }
 
@@ -234,6 +237,9 @@ class AdminDashboardController extends Controller
 
         $user->save();
 
+        // Log User Updated activity
+        \App\Services\ActivityLogger::log('user_updated', 'admin', "Admin Updated User account details: {$user->name} (#{$user->id}).", Auth::id(), 'success');
+
         return redirect()->route('admin.dashboard')->with('success', 'User account updated successfully.');
     }
 
@@ -250,6 +256,9 @@ class AdminDashboardController extends Controller
         }
 
         $user->delete();
+
+        // Log User Deleted activity
+        \App\Services\ActivityLogger::log('user_deleted', 'admin', "Admin Deleted User account: {$user->name} (#{$user->id}).", Auth::id(), 'success');
 
         return redirect()->route('admin.dashboard')->with('success', 'User account deleted successfully.');
     }
@@ -286,6 +295,9 @@ class AdminDashboardController extends Controller
         }
 
         $user->save();
+
+        // Log Profile update activity
+        \App\Services\ActivityLogger::log('profile_update', 'admin', "Admin updated profile credentials.", Auth::id(), 'success');
 
         return redirect()->route('admin.profile')->with('success', 'Profile updated successfully.');
     }
