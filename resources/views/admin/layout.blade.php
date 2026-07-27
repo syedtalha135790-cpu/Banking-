@@ -103,6 +103,16 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link @if(Route::is('admin.accounts.index') || Route::is('admin.accounts.details') || Route::is('admin.accounts.edit')) active @endif" href="{{ route('admin.accounts.index') }}">
+                        <i class="bi bi-wallet2"></i> Manage Accounts
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link @if(Route::is('admin.accounts.create')) active @endif" href="{{ route('admin.accounts.create') }}">
+                        <i class="bi bi-plus-square"></i> Open Bank Account
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link @if(Route::is('admin.users.create')) active @endif" href="{{ route('admin.users.create') }}">
                         <i class="bi bi-person-plus"></i> Create User
                     </a>

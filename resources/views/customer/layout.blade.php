@@ -99,7 +99,17 @@
             <ul class="nav flex-column mt-4">
                 <li class="nav-item">
                     <a class="nav-link @if(Route::is('customer.dashboard')) active @endif" href="{{ route('customer.dashboard') }}">
-                        <i class="bi bi-wallet2"></i> Dashboard
+                        <i class="bi bi-speedometer2"></i> Welcome Page
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link @if(Route::is('customer.accounts.index') || Route::is('customer.account.details') || Route::is('customer.accounts.edit') || Route::is('customer.account.transactions') || Route::is('customer.accounts.deposit.form') || Route::is('customer.accounts.withdraw.form')) active @endif" href="{{ route('customer.accounts.index') }}">
+                        <i class="bi bi-wallet2"></i> My Bank Accounts
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link @if(Route::is('customer.accounts.create')) active @endif" href="{{ route('customer.accounts.create') }}">
+                        <i class="bi bi-plus-square"></i> Open New Account
                     </a>
                 </li>
                 <li class="nav-item">

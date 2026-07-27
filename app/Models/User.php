@@ -30,4 +30,12 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    /**
+     * Get the accounts associated with the user.
+     */
+    public function accounts()
+    {
+        return $this->hasMany(Account::class);
+    }
 }

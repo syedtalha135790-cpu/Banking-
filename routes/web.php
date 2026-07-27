@@ -77,6 +77,20 @@ Route::middleware(['auth', 'verified', 'admin'])->prefix('admin')->name('admin.'
     Route::delete('/users/{id}', [\App\Http\Controllers\AdminDashboardController::class, 'deleteUser'])->name('users.delete');
     Route::get('/profile', [\App\Http\Controllers\AdminDashboardController::class, 'profile'])->name('profile');
     Route::put('/profile', [\App\Http\Controllers\AdminDashboardController::class, 'updateProfile'])->name('profile.update');
+
+    // Accounts Management
+    Route::get('/accounts', [\App\Http\Controllers\AdminAccountController::class, 'index'])->name('accounts.index');
+    Route::get('/accounts/create', [\App\Http\Controllers\AdminAccountController::class, 'create'])->name('accounts.create');
+    Route::post('/accounts', [\App\Http\Controllers\AdminAccountController::class, 'store'])->name('accounts.store');
+    Route::get('/accounts/{id}/details', [\App\Http\Controllers\AdminAccountController::class, 'details'])->name('accounts.details');
+    Route::get('/accounts/{id}/edit', [\App\Http\Controllers\AdminAccountController::class, 'edit'])->name('accounts.edit');
+    Route::put('/accounts/{id}', [\App\Http\Controllers\AdminAccountController::class, 'update'])->name('accounts.update');
+    Route::post('/accounts/{id}/status', [\App\Http\Controllers\AdminAccountController::class, 'toggleStatus'])->name('accounts.status');
+    Route::delete('/accounts/{id}', [\App\Http\Controllers\AdminAccountController::class, 'destroy'])->name('accounts.delete');
+
+    // Transactions triggers
+    Route::post('/accounts/{id}/deposit', [\App\Http\Controllers\AccountController::class, 'deposit'])->name('accounts.deposit');
+    Route::post('/accounts/{id}/withdraw', [\App\Http\Controllers\AccountController::class, 'withdraw'])->name('accounts.withdraw');
 });
 
 // Customer Route Group
@@ -86,4 +100,19 @@ Route::middleware(['auth', 'verified', 'customer'])->prefix('customer')->name('c
     Route::put('/profile', [\App\Http\Controllers\CustomerDashboardController::class, 'updateProfile'])->name('profile.update');
     Route::get('/password/change', [\App\Http\Controllers\CustomerDashboardController::class, 'changePasswordForm'])->name('password.change');
     Route::put('/password', [\App\Http\Controllers\CustomerDashboardController::class, 'updatePassword'])->name('password.update');
+
+    // Accounts Management
+    Route::get('/accounts', [\App\Http\Controllers\CustomerAccountController::class, 'index'])->name('accounts.index');
+    Route::get('/accounts/create', [\App\Http\Controllers\CustomerAccountController::class, 'create'])->name('accounts.create');
+    Route::post('/accounts', [\App\Http\Controllers\CustomerAccountController::class, 'store'])->name('accounts.store');
+    Route::get('/accounts/{id}/details', [\App\Http\Controllers\CustomerAccountController::class, 'details'])->name('account.details');
+    Route::get('/accounts/{id}/edit', [\App\Http\Controllers\CustomerAccountController::class, 'edit'])->name('accounts.edit');
+    Route::put('/accounts/{id}', [\App\Http\Controllers\CustomerAccountController::class, 'update'])->name('accounts.update');
+    Route::get('/accounts/{id}/transactions', [\App\Http\Controllers\CustomerAccountController::class, 'transactions'])->name('account.transactions');
+
+    // Self Transactions
+    Route::get('/accounts/{id}/deposit', [\App\Http\Controllers\CustomerAccountController::class, 'showDepositForm'])->name('accounts.deposit.form');
+    Route::post('/accounts/{id}/deposit', [\App\Http\Controllers\AccountController::class, 'deposit'])->name('accounts.deposit');
+    Route::get('/accounts/{id}/withdraw', [\App\Http\Controllers\CustomerAccountController::class, 'showWithdrawForm'])->name('accounts.withdraw.form');
+    Route::post('/accounts/{id}/withdraw', [\App\Http\Controllers\AccountController::class, 'withdraw'])->name('accounts.withdraw');
 });
